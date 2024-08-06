@@ -17,7 +17,7 @@ class AppString {
   static const String emailError = "Enter a valid email address";
   static const String passwordError = 'Password cannot be empty';
   static const String mobileNumberError = "Enter a valid mobile number";
-  static const String pleaseChecktermConditaion = "Please check term and condition";
+  static const String pleaseChecktermConditaion = "Please tick term and condition";
   static const String singUp = 'Sign Up';
   static const String selectRole = "Please select role";
   static const String haveAnAccount = 'Have an account? ';
@@ -33,6 +33,7 @@ class AppString {
   static const String code = "code";
   static const String sentMessage = "we’ve sent you";
   static const String sendAgain = "Send again";
+  static const String otpSent="OTP sent successfully";
 }
 
 class AppRouteString {

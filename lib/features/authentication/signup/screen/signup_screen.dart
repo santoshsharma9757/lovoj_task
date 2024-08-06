@@ -180,28 +180,28 @@ class _SignupScreenState extends State<SignupScreen> {
             return ReusableButton(
               onPressed: () {
                 if (_userNameController.text.isEmpty) {
-                  AppUtils.snackBar(AppString.userCannotEmpty, context);
+                  AppUtils.snackBarError(AppString.userCannotEmpty, context);
                   return;
                 }
                 if (_userEmailController.text.isEmpty ||
                     !RegExp(r'^[^@]+@[^@]+\.[^@]+')
                         .hasMatch(_userEmailController.text)) {
-                  AppUtils.snackBar(AppString.emailError, context);
+                  AppUtils.snackBarError(AppString.emailError, context);
                   return;
                 }
                 if (_passwordController.text.isEmpty) {
-                  AppUtils.snackBar(AppString.passwordError, context);
+                  AppUtils.snackBarError(AppString.passwordError, context);
                   return;
                 }
                 if (_mobileNumberController.text.isEmpty ||
                     !RegExp(r'^\d{10}$')
                         .hasMatch(_mobileNumberController.text)) {
-                  AppUtils.snackBar(AppString.mobileNumberError, context);
+                  AppUtils.snackBarError(AppString.mobileNumberError, context);
                   return;
                 }
 
                 if (!isChecked) {
-                  AppUtils.snackBar(
+                  AppUtils.snackBarError(
                       AppString.pleaseChecktermConditaion, context);
                   return;
                 }

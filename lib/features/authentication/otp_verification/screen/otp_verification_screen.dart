@@ -4,9 +4,13 @@ import 'package:lovoj_task/core/constant/app_constant.dart';
 import 'package:lovoj_task/core/constant/app_image.dart';
 import 'package:lovoj_task/core/constant/app_string.dart';
 import 'package:lovoj_task/core/constant/app_text_style.dart';
+import 'package:lovoj_task/core/constant/screen_size.dart';
+import 'package:lovoj_task/core/utils/utils.dart';
 import 'package:lovoj_task/core/widgets/custim_text.dart';
+import 'package:lovoj_task/features/authentication/otp_verification/bloc/otp_bloc.dart';
+import 'package:lovoj_task/features/authentication/otp_verification/bloc/otp_event.dart';
+import 'package:lovoj_task/features/authentication/otp_verification/bloc/otp_state.dart';
 import 'package:lovoj_task/features/authentication/signup/bloc/signup_bloc.dart';
-import 'package:lovoj_task/features/authentication/signup/bloc/signup_event.dart';
 import 'package:lovoj_task/features/authentication/signup/bloc/signup_state.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
@@ -140,7 +144,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       }
     }, builder: (context, state) {
       return SizedBox(
-        width: 400,
+        width: ScreenSize.screenWidthPercentage(context, 0.9),
         child: Center(
           child: OTPTextField(
               controller: otpController,
@@ -159,12 +163,12 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   fontWeight: FontWeight.bold),
               onChanged: (pin) {},
               onCompleted: (pin) {
-                context.read<SignUpBloc>().add(SignUpRequestEvent(
-                    userName: widget.username,
-                    userEmail: widget.useremail,
-                    password: widget.password,
-                    mobileNumber: widget.usermobile,
-                    otpKey: pin));
+                // context.read<SignUpBloc>().add(SignUpRequestEvent(
+                //     userName: widget.username,
+                //     userEmail: widget.useremail,
+                //     password: widget.password,
+                //     mobileNumber: widget.usermobile,
+                //     otpKey: pin));
               }),
         ),
       );
@@ -172,10 +176,27 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   }
 
   _buildSendText() {
-    return ReusableText(
-      text: AppString.sendAgain,
-      style:
-          timerInSec == 0 ? AppTextStyles.bodyText4 : AppTextStyles.bodyText3,
+    return BlocConsumer<OtpBloc, OtpState>(
+      listener: (context, state) {
+        if (state is OtpSuccessState) {
+          AppUtils.snackBarSuccess(AppString.otpSent, context);
+        } else if (state is OtpFailureState) {
+          AppUtils.showMyDialog(state.error.toString(), context);
+        }
+      },
+      builder: (context, state) {
+        return GestureDetector(
+          onTap: () {
+            context.read<OtpBloc>().add(GetOtpEvent(widget.useremail));
+          },
+          child: ReusableText(
+            text: AppString.sendAgain,
+            style: timerInSec == 0
+                ? AppTextStyles.bodyText4
+                : AppTextStyles.bodyText3,
+          ),
+        );
+      },
     );
   }
 }

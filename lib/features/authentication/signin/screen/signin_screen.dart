@@ -140,18 +140,18 @@ class _SignInScreenState extends State<SignInScreen> {
               return ReusableButton(
                 onPressed: () {
                   if (_selectedRole == null) {
-                    AppUtils.snackBar(AppString.selectRole, context);
+                    AppUtils.snackBarError(AppString.selectRole, context);
                     return;
                   }
 
                   if (_userEmailController.text.isEmpty ||
                       !RegExp(r'^[^@]+@[^@]+\.[^@]+')
                           .hasMatch(_userEmailController.text)) {
-                    AppUtils.snackBar(AppString.emailError, context);
+                    AppUtils.snackBarError(AppString.emailError, context);
                     return;
                   }
                   if (_passwordController.text.isEmpty) {
-                    AppUtils.snackBar(AppString.passwordError, context);
+                    AppUtils.snackBarError(AppString.passwordError, context);
                     return;
                   }
                   context.read<SignInBloc>().add(SignInRequestEvent(

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AppUtils {
-  static snackBar(String message, BuildContext context) {
+  static snackBarError(String message, BuildContext context) {
     return ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(backgroundColor: Colors.red, content: Text(message)));
+  }
+
+    static snackBarSuccess(String message, BuildContext context) {
+    return ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(backgroundColor:Colors.green, content: Text(message)));
   }
 
   static showMyDialog(
