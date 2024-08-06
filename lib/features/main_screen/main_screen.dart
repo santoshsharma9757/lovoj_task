@@ -10,7 +10,7 @@ class MainScreen extends StatelessWidget {
         title: const Text("HOME"),
         centerTitle: true,
       ),
-      body: Center(child: Text("WELCOME TO LOVOJ TECH")),
+      body: const Center(child: Text("WELCOME TO LOVOJ TECH")),
     );
   }
 }

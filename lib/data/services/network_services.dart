@@ -24,9 +24,7 @@ class NetworkServices {
     try {
       final response = await http.post(Uri.parse(url),
           body: jsonEncode(data),
-          headers: {
-            "Content-Type": "application/json"
-          }).timeout(const Duration(seconds: 30));
+          headers: {"Content-Type": "application/json"});
       log("dataToSend DATAsss ${response.body}");
       responseJson = returnResponse(response);
     } on SocketException {

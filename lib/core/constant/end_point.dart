@@ -1,5 +1,7 @@
-class ApiEndPoint{
-   static const String baseUrl="";
-  static const String subscription='${baseUrl}Subscription/';
-  static const String expertDetail='${baseUrl}Subscription/GetByExpertsId/c541a503-d267-4652-ceb8-08dca55ffcba';
+class ApiEndPoint {
+  static const String baseUrl = "https://b2b.lovoj.com/api/v1/";
+  static const String checkEmail = '${baseUrl}auth/checkemail';
+  static const String createStore='${baseUrl}auth/createStore';
+  static const String login ='${baseUrl}auth/login';
+     
 }

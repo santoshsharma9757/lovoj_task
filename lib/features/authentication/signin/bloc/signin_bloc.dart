@@ -8,7 +8,6 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc() : super(SignInInitialState()) {
     on<SignInRequestEvent>(_onSignInRequestEvent);
   }
-
   _onSignInRequestEvent(
       SignInRequestEvent event, Emitter<SignInState> emit) async {
     emit(SignInLoadingState());
@@ -18,12 +17,11 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       'password': event.password,
       'role': event.role,
       'deviceToken': "",
-      'storeType': "Fabric"
+      'storeType': "Fabric" //just added dummy there is no input from UI
     };
-    print("BODY TO SEND SIGNUIN $bodyToSend");
     try {
       final response = await authenticationRepo.signIn(bodyToSend);
-    
+
       if (response['success']) {
         emit(SignInSuccessState());
       }

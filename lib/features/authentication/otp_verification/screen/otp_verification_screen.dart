@@ -6,7 +6,7 @@ import 'package:lovoj_task/core/constant/app_string.dart';
 import 'package:lovoj_task/core/constant/app_text_style.dart';
 import 'package:lovoj_task/core/constant/screen_size.dart';
 import 'package:lovoj_task/core/utils/utils.dart';
-import 'package:lovoj_task/core/widgets/custim_text.dart';
+import 'package:lovoj_task/core/widgets/reusable_text.dart';
 import 'package:lovoj_task/features/authentication/otp_verification/bloc/otp_bloc.dart';
 import 'package:lovoj_task/features/authentication/otp_verification/bloc/otp_event.dart';
 import 'package:lovoj_task/features/authentication/otp_verification/bloc/otp_state.dart';

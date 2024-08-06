@@ -6,10 +6,10 @@ import 'package:lovoj_task/core/constant/app_string.dart';
 import 'package:lovoj_task/core/constant/app_text_style.dart';
 import 'package:lovoj_task/core/constant/screen_size.dart';
 import 'package:lovoj_task/core/utils/utils.dart';
-import 'package:lovoj_task/core/widgets/custim_text.dart';
-import 'package:lovoj_task/core/widgets/cutom_tect.dart';
 import 'package:lovoj_task/core/widgets/reusable_container_button.dart';
 import 'package:lovoj_task/core/widgets/reusable_dropdown.dart';
+import 'package:lovoj_task/core/widgets/reusable_text.dart';
+import 'package:lovoj_task/core/widgets/reusable_text_filed.dart';
 import 'package:lovoj_task/features/authentication/signin/bloc/signin_bloc.dart';
 import 'package:lovoj_task/features/authentication/signin/bloc/signin_event.dart';
 import 'package:lovoj_task/features/authentication/signin/bloc/signin_state.dart';
@@ -167,7 +167,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 borderRadius: 12.0,
                 padding: const EdgeInsets.symmetric(
                     vertical: AppPadding.medium, horizontal:AppPadding.large),
-                isLoading: state is SignInSuccessState ? true : false,
+                isLoading: state is SignInLoadingState ? true : false,
               );
             },
           ),

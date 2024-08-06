@@ -5,7 +5,6 @@ import 'package:lovoj_task/data/repository/authentication_repository.dart';
 import 'package:lovoj_task/features/authentication/signup/bloc/signup_event.dart';
 import 'package:lovoj_task/features/authentication/signup/bloc/signup_state.dart';
 
-// Bloc Class
 class SignUpBloc extends Bloc<SignUpEvent, SignupState> {
   final authenticationRepo = AuthenticationRepo();
 
@@ -20,7 +19,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignupState> {
       'name': event.userName,
       'email': event.userEmail,
       'otp_key': event.otpKey,
-      'storeType': "Fabric",
+      'storeType': "Fabric", //just added dummy there is no input from UI
       'password': event.password,
       'mobileNumber': event.mobileNumber
     };
@@ -29,7 +28,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignupState> {
 
     try {
       final response = await authenticationRepo.signUp(bodyToSend);
-      emit(SignUpSuccessState());
+      if (response['success']) {
+        emit(SignUpSuccessState());
+      }
     } catch (error) {
       String errorMessage =
           error.toString().replaceFirst('Exception:', '').trim();
