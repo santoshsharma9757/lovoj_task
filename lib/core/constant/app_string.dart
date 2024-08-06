@@ -26,6 +26,7 @@ class AppString {
   static const String privacyPolicy1 =
       'By creating an account or logging in, you agree to LOVOJ’s ';
   static const String privacyPolicy2 = 'Privacy Policy.';
+  static const String loginMesssage="Login Successfull !!!";
 
   //OTP Screen
 

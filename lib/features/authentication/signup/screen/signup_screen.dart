@@ -214,8 +214,8 @@ class _SignupScreenState extends State<SignupScreen> {
               backgroundColor: AppColors.primary,
               textColor: Colors.white,
               borderRadius: 12.0,
-             padding: const EdgeInsets.symmetric(
-                    vertical: AppPadding.medium, horizontal:AppPadding.large),
+              padding: const EdgeInsets.symmetric(
+                  vertical: AppPadding.medium, horizontal: AppPadding.large),
               isLoading: state is OtpLoadingState ? true : false,
             );
           }),
@@ -264,6 +264,7 @@ class _SignupScreenState extends State<SignupScreen> {
   _buildNeedHelpSection() {
     return Positioned(
         bottom: 20,
+        left: 12,
         child: Padding(
           padding: const EdgeInsets.all(AppPadding.medium),
           child: Row(

@@ -46,7 +46,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
           children: [
             AppSpacing.vertical(50),
             _buildBackIcon(context),
-            AppSpacing.verticalMedium,
             _buildIconSection(),
             _buildTimerSection(),
             AppSpacing.verticalMedium,
@@ -155,6 +154,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
           length: 6,
           obscureText: false,
           keyboardType: TextInputType.number,
+          hintCharacter: '0',
+          hintStyle: const TextStyle(color: AppColors.borderGrey),
           pinTheme: PinTheme(
             shape: PinCodeFieldShape.box,
             borderRadius: BorderRadius.circular(5),

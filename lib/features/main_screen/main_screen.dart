@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lovoj_task/core/constant/app_text_style.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -10,7 +11,7 @@ class MainScreen extends StatelessWidget {
         title: const Text("HOME"),
         centerTitle: true,
       ),
-      body: const Center(child: Text("WELCOME TO LOVOJ TECH")),
+      body: const Center(child: Text("WELCOME TO LOVOJ TECH",style: AppTextStyles.bodyText4,)),
     );
   }
 }

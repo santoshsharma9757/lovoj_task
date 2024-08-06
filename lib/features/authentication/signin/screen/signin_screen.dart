@@ -25,7 +25,8 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _userEmailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   String? _selectedRole;
-  List<String> userRoles = ["Admin", "User", "Guest"];
+
+  List<String> userRoles = ["Admin", "User", "Guest"]; //Dummy Data
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,7 +132,7 @@ class _SignInScreenState extends State<SignInScreen> {
             listener: (context, state) {
               if (state is SignInSuccessState) {
                 AppUtils.snackBarSuccess(
-                    "Login Successfull!!!".toString(), context);
+                    AppString.loginMesssage.toString(), context);
                 Navigator.pushNamed(context, AppRouteString.home);
               } else if (state is SignInFailureState) {
                 AppUtils.showMyDialog(state.error.toString(), context);
@@ -159,14 +160,18 @@ class _SignInScreenState extends State<SignInScreen> {
                       userEmail: _userEmailController.text,
                       password: _passwordController.text,
                       deviceToken: "",
-                      role: _selectedRole!.toLowerCase()));
+                      role:
+                          'admin' //Just putted static due to api not accepting other role
+                      // _selectedRole!.toLowerCase()
+
+                      ));
                 },
                 label: AppString.signIn,
                 backgroundColor: AppColors.primary,
                 textColor: Colors.white,
                 borderRadius: 12.0,
                 padding: const EdgeInsets.symmetric(
-                    vertical: AppPadding.medium, horizontal:AppPadding.large),
+                    vertical: AppPadding.medium, horizontal: AppPadding.large),
                 isLoading: state is SignInLoadingState ? true : false,
               );
             },
@@ -213,6 +218,7 @@ class _SignInScreenState extends State<SignInScreen> {
   _buildNeedhelpSection() {
     return Positioned(
         bottom: 20,
+        left: 12,
         child: Padding(
           padding: const EdgeInsets.all(AppPadding.medium),
           child: Row(
