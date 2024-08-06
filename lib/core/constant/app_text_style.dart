@@ -67,4 +67,12 @@ class AppTextStyles {
     fontWeight: AppFontWeight.light,
     color: AppColors.appBlack,
   );
+
+   static const TextStyle otpText = TextStyle(
+    fontSize: 25.0,
+    fontWeight: AppFontWeight.bold,
+    color: AppColors.white,
+  );
+
+
 }

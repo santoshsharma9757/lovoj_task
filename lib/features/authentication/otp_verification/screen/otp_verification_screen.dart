@@ -11,9 +11,10 @@ import 'package:lovoj_task/features/authentication/otp_verification/bloc/otp_blo
 import 'package:lovoj_task/features/authentication/otp_verification/bloc/otp_event.dart';
 import 'package:lovoj_task/features/authentication/otp_verification/bloc/otp_state.dart';
 import 'package:lovoj_task/features/authentication/signup/bloc/signup_bloc.dart';
+import 'package:lovoj_task/features/authentication/signup/bloc/signup_event.dart';
 import 'package:lovoj_task/features/authentication/signup/bloc/signup_state.dart';
 import 'package:otp_text_field/otp_text_field.dart';
-import 'package:otp_text_field/style.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
@@ -143,32 +144,41 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       }
     }, builder: (context, state) {
       return SizedBox(
-        width: ScreenSize.screenWidthPercentage(context, 0.9),
-        child: Center(
-          child: OTPTextField(
-              controller: otpController,
-              length: 6,
-              width: MediaQuery.of(context).size.width,
-              textFieldAlignment: MainAxisAlignment.spaceAround,
-              fieldWidth: 50,
-              fieldStyle: FieldStyle.box,
-              outlineBorderRadius: 10,
-              otpFieldStyle: OtpFieldStyle(
-                  backgroundColor: AppColors.white,
-                  borderColor: AppColors.primary),
-              style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
-              onChanged: (pin) {},
-              onCompleted: (pin) {
-                // context.read<SignUpBloc>().add(SignUpRequestEvent(
-                //     userName: widget.username,
-                //     userEmail: widget.useremail,
-                //     password: widget.password,
-                //     mobileNumber: widget.usermobile,
-                //     otpKey: pin));
-              }),
+        width: ScreenSize.screenWidthPercentage(context, 0.8),
+        child: PinCodeTextField(
+          appContext: context,
+          length: 6,
+          obscureText: false,
+          keyboardType: TextInputType.number,
+          pinTheme: PinTheme(
+            shape: PinCodeFieldShape.box,
+            borderRadius: BorderRadius.circular(5),
+            fieldHeight: 45,
+            fieldWidth: 45,
+            activeFillColor: AppColors.primary,
+            inactiveFillColor: Colors.white,
+            selectedFillColor: Colors.white,
+            activeColor: AppColors.primary,
+            inactiveColor: AppColors.primary,
+            selectedColor: AppColors.primary,
+            borderWidth: 0.2,
+          ),
+          enableActiveFill: true,
+          textStyle: AppTextStyles.otpText,
+          onCompleted: (pin) {
+            context.read<SignUpBloc>().add(SignUpRequestEvent(
+                userName: widget.username,
+                userEmail: widget.useremail,
+                password: widget.password,
+                mobileNumber: widget.usermobile,
+                otpKey: pin));
+          },
+          onChanged: (value) {
+            setState(() {});
+          },
+          beforeTextPaste: (text) {
+            return true;
+          },
         ),
       );
     });
