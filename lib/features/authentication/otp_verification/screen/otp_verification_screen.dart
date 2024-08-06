@@ -93,7 +93,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
   _buildTimerSection() {
     return Countdown(
-      seconds: 10,
+      seconds: 60,
       build: (_, double time) {
         if (time.toInt() == 0) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
