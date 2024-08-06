@@ -5,5 +5,5 @@
 ##### user can Signin and navigate to home screen
 
 ## Android Apk
-[GitHub](https://github.com)
+[APK URL](https://github.com)
 
