@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => SignInBloc()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: AppColors.customColor),
         onGenerateRoute: AppRoutes.onGeneratedRoute,
         initialRoute: AppRouteString.signup,
