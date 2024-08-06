@@ -130,10 +130,11 @@ class _SignInScreenState extends State<SignInScreen> {
           BlocConsumer<SignInBloc, SignInState>(
             listener: (context, state) {
               if (state is SignInSuccessState) {
-                // Navigator.pushNamed(context, '/home');
-              } else if (state is SignInFailureState) {
+                AppUtils.snackBarSuccess(
+                    "Login Successfull!!!".toString(), context);
                 Navigator.pushNamed(context, AppRouteString.home);
-                // AppUtils.showMyDialog(state.error.toString(), context);
+              } else if (state is SignInFailureState) {
+                AppUtils.showMyDialog(state.error.toString(), context);
               }
             },
             builder: (context, state) {
@@ -158,20 +159,21 @@ class _SignInScreenState extends State<SignInScreen> {
                       userEmail: _userEmailController.text,
                       password: _passwordController.text,
                       deviceToken: "",
-                      role: _selectedRole));
+                      role: _selectedRole!.toLowerCase()));
                 },
                 label: AppString.signIn,
                 backgroundColor: AppColors.primary,
                 textColor: Colors.white,
                 borderRadius: 12.0,
                 padding: const EdgeInsets.symmetric(
-                    vertical: 16.0, horizontal: 24.0),
+                    vertical: AppPadding.medium, horizontal:AppPadding.large),
+                isLoading: state is SignInSuccessState ? true : false,
               );
             },
           ),
           AppSpacing.verticalSmall,
           GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.pushNamed(context, AppRouteString.signup);
             },
             child: RichText(
@@ -181,7 +183,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       text: AppString.haveAnAccount,
                       style: AppTextStyles.bodyText),
                   TextSpan(
-                      text: AppString.singUpNow, style: AppTextStyles.bodyText2),
+                      text: AppString.singUpNow,
+                      style: AppTextStyles.bodyText2),
                 ],
               ),
             ),

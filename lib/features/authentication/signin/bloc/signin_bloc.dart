@@ -17,12 +17,16 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       'email': event.userEmail,
       'password': event.password,
       'role': event.role,
-      'deviceToken': ""
+      'deviceToken': "",
+      'storeType': "Fabric"
     };
     print("BODY TO SEND SIGNUIN $bodyToSend");
     try {
       final response = await authenticationRepo.signIn(bodyToSend);
-      if (response['success']) {}
+    
+      if (response['success']) {
+        emit(SignInSuccessState());
+      }
     } catch (error) {
       String errorMessage =
           error.toString().replaceFirst('Exception:', '').trim();

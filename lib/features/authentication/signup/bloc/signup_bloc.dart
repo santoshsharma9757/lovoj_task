@@ -11,8 +11,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignupState> {
 
   SignUpBloc() : super(SignUpInitialState()) {
     on<SignUpRequestEvent>(_onSignUpRequestEvent);
-
-    // on((event, emit) => emit())
   }
 
   Future<void> _onSignUpRequestEvent(

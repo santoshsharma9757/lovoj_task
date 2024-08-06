@@ -105,7 +105,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
         }
 
         return Text(
-          "00:${time.toInt()}".toString(),
+          time.toInt() == 0
+              ? "00:${time.toInt()}0".toString()
+              : "00:${time.toInt()}".toString(),
           style: AppTextStyles.heading1,
         );
       },
@@ -138,11 +140,14 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   _buildOtpBoxSection() {
     return BlocConsumer<SignUpBloc, SignupState>(listener: (context, state) {
       if (state is SignUpSuccessState) {
-      } else if (state is SignUpFailureState) {
-        // AppUtils.showMyDialog(state.error.toString(), context);
         Navigator.pushNamed(context, AppRouteString.singin);
+      } else if (state is SignUpFailureState) {
+        AppUtils.showMyDialog(state.error.toString(), context);
       }
     }, builder: (context, state) {
+      if (state is SignUpLoadingState) {
+        return const Center(child: CircularProgressIndicator());
+      }
       return SizedBox(
         width: ScreenSize.screenWidthPercentage(context, 0.8),
         child: PinCodeTextField(
@@ -196,13 +201,16 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       builder: (context, state) {
         return GestureDetector(
           onTap: () {
-            context.read<OtpBloc>().add(GetOtpEvent(widget.useremail));
+            if (timerInSec == 0) {
+              context.read<OtpBloc>().add(GetOtpEvent(widget.useremail));
+            } else {
+              AppUtils.snackBarSuccess(
+                  AppString.pleaseWaitTimerMessage, context);
+            }
           },
-          child: ReusableText(
+          child: const ReusableText(
             text: AppString.sendAgain,
-            style: timerInSec == 0
-                ? AppTextStyles.bodyText4
-                : AppTextStyles.bodyText3,
+            style: AppTextStyles.bodyText4,
           ),
         );
       },

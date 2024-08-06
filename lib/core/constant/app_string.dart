@@ -34,6 +34,7 @@ class AppString {
   static const String sentMessage = "we’ve sent you";
   static const String sendAgain = "Send again";
   static const String otpSent="OTP sent successfully";
+  static const String pleaseWaitTimerMessage="Please wait your timer is running";
 }
 
 class AppRouteString {

@@ -214,8 +214,8 @@ class _SignupScreenState extends State<SignupScreen> {
               backgroundColor: AppColors.primary,
               textColor: Colors.white,
               borderRadius: 12.0,
-              padding:
-                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+             padding: const EdgeInsets.symmetric(
+                    vertical: AppPadding.medium, horizontal:AppPadding.large),
               isLoading: state is OtpLoadingState ? true : false,
             );
           }),
