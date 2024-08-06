@@ -134,7 +134,7 @@ class _SignupScreenState extends State<SignupScreen> {
             keyboardType: TextInputType.text,
             obscureText: true,
           ),
-          AppSpacing.verticalMedium,
+          AppSpacing.verticalSmall,
           Row(
             children: [
               AppSpacing.horizontalExtraSmall,
