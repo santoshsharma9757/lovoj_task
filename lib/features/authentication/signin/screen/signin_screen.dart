@@ -92,9 +92,10 @@ class _SignInScreenState extends State<SignInScreen> {
             text: AppString.designer,
             style: AppTextStyles.heading1,
           ),
+          AppSpacing.verticalExtraSmall,
           const ReusableText(
             text: AppString.welcomeBack,
-            style: AppTextStyles.heading4,
+            style: AppTextStyles.heading2,
           ),
           AppSpacing.verticalMedium,
           ReusableDropdown(
@@ -169,15 +170,20 @@ class _SignInScreenState extends State<SignInScreen> {
             },
           ),
           AppSpacing.verticalSmall,
-          RichText(
-            text: const TextSpan(
-              children: [
-                TextSpan(
-                    text: AppString.haveAnAccount,
-                    style: AppTextStyles.bodyText),
-                TextSpan(
-                    text: AppString.singUpNow, style: AppTextStyles.bodyText2),
-              ],
+          GestureDetector(
+            onTap: (){
+              Navigator.pushNamed(context, AppRouteString.signup);
+            },
+            child: RichText(
+              text: const TextSpan(
+                children: [
+                  TextSpan(
+                      text: AppString.haveAnAccount,
+                      style: AppTextStyles.bodyText),
+                  TextSpan(
+                      text: AppString.singUpNow, style: AppTextStyles.bodyText2),
+                ],
+              ),
             ),
           ),
           const Spacer(),

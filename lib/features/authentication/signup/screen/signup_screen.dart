@@ -94,9 +94,10 @@ class _SignupScreenState extends State<SignupScreen> {
             text: AppString.designer,
             style: AppTextStyles.heading1,
           ),
+          AppSpacing.verticalExtraSmall,
           const ReusableText(
             text: AppString.welcomeHere,
-            style: AppTextStyles.heading4,
+            style: AppTextStyles.heading2,
           ),
           AppSpacing.verticalMedium,
           ReusableTextField(
@@ -117,7 +118,7 @@ class _SignupScreenState extends State<SignupScreen> {
               decoration: const InputDecoration(
                 labelText: '',
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(),
+                  borderSide: BorderSide(color: AppColors.borderGrey),
                 ),
               ),
               initialCountryCode: 'IN',
@@ -196,6 +197,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     !RegExp(r'^\d{10}$')
                         .hasMatch(_mobileNumberController.text)) {
                   AppUtils.snackBar(AppString.mobileNumberError, context);
+                  return;
+                }
+
+                if (!isChecked) {
+                  AppUtils.snackBar(
+                      AppString.pleaseChecktermConditaion, context);
                   return;
                 }
 

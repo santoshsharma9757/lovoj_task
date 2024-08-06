@@ -4,7 +4,7 @@ import 'package:lovoj_task/core/constant/app_constant.dart';
 class AppTextStyles {
   static const TextStyle heading1 = TextStyle(
     fontSize: 40.0,
-    fontWeight: AppFontWeight.bold,
+    fontWeight: AppFontWeight.semiBold,
     color: AppColors.black,
   );
 

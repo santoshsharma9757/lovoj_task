@@ -13,10 +13,11 @@ class AppString {
   static const String paswordErrorMessage =
       "Passwords must be at least 6 characters.";
   static const String termCondition = "I accept the Terms and conditions";
-  static const String userCannotEmpty = "Username cannot be empty";
+  static const String userCannotEmpty = "Name cannot be empty";
   static const String emailError = "Enter a valid email address";
   static const String passwordError = 'Password cannot be empty';
   static const String mobileNumberError = "Enter a valid mobile number";
+  static const String pleaseChecktermConditaion = "Please check term and condition";
   static const String singUp = 'Sign Up';
   static const String selectRole = "Please select role";
   static const String haveAnAccount = 'Have an account? ';

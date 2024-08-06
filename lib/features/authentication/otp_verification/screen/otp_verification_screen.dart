@@ -31,7 +31,7 @@ class OtpVerificationScreen extends StatefulWidget {
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   final OtpFieldController otpController = OtpFieldController();
-
+  int timerInSec = -1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,6 +92,14 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     return Countdown(
       seconds: 10,
       build: (_, double time) {
+        if (time.toInt() == 0) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            setState(() {
+              timerInSec = time.toInt();
+            });
+          });
+        }
+
         return Text(
           "00:${time.toInt()}".toString(),
           style: AppTextStyles.heading1,
@@ -164,9 +172,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   }
 
   _buildSendText() {
-    return const ReusableText(
+    return ReusableText(
       text: AppString.sendAgain,
-      style: AppTextStyles.bodyText4,
+      style:
+          timerInSec == 0 ? AppTextStyles.bodyText4 : AppTextStyles.bodyText3,
     );
   }
 }
