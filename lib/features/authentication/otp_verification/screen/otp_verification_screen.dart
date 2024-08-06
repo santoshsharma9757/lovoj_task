@@ -47,7 +47,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             _buildBackIcon(context),
             AppSpacing.verticalMedium,
             _buildIconSection(),
-            AppSpacing.verticalMedium,
             _buildTimerSection(),
             AppSpacing.verticalMedium,
             _buildTextMessageSection(),
