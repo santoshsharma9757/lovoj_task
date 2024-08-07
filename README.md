@@ -5,7 +5,7 @@
 ##### user can Signin and navigate to home screen
 
 ## Android Apk
-[APK URL](https://github.com)
+[APK URL](https://i.diawi.com/GVAjdr)
 
 ### Screenshots
 ![signup_screen](https://github.com/user-attachments/assets/4e3969be-9a48-4884-acbf-9d8bfabf9714)
